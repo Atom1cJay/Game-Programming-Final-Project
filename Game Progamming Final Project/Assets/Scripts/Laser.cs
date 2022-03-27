@@ -16,11 +16,6 @@ public class Laser : MonoBehaviour
         //transform.Translate(Vector3.forward * 50);
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

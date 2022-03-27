@@ -34,10 +34,10 @@ public class LaserEnemy : MonoBehaviour
 
         //rollingBall.rotation;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        /*if (Input.GetKey(KeyCode.LeftShift))
         {
             Die();
-        }
+        }*/
     }
 
     void Die()

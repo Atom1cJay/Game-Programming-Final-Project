@@ -16,10 +16,13 @@ public class CharacterMovement : MonoBehaviour
     Vector3 moveDirection;
     CharacterController _controller;
 
+    Vector3 appliedForce;
+
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        appliedForce = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -63,14 +66,27 @@ public class CharacterMovement : MonoBehaviour
             input.y = moveDirection.y;
 
             moveDirection = Vector3.Lerp(moveDirection, input, Time.deltaTime * airControl);
+
+            moveDirection.y -= gravity * Time.deltaTime;
         }
 
-
-
-
-        moveDirection.y -= gravity * Time.deltaTime;
+        
         
         _controller.Move(moveDirection * moveSpeed * Time.deltaTime);
-        
+
+
+        //_controller.Move(appliedForce * Time.deltaTime);
+        //appliedForce = Vector3.Lerp(appliedForce, Vector3.zero, Time.deltaTime);
+
     }
+
+
+    public void ApplyForce(Vector3 force)
+    {
+        force.y += moveDirection.y;
+        //appliedForce = force;
+        Debug.Log(force);
+        _controller.Move(force * Time.deltaTime);
+    }
+
 }

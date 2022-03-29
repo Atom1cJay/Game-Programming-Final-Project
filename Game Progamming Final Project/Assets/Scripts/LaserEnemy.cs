@@ -42,6 +42,7 @@ public class LaserEnemy : MonoBehaviour
 
     void Die()
     {
+        FindObjectOfType<LevelManager>().EnemyDestroyed();
         Instantiate(deadPrefab, transform.position - new Vector3(0, 1.3f, 0), transform.rotation);
         Destroy(gameObject);
     }

@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
 
         isGameOver = false;
 
-        scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
+        //scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
     }
 
     void SetGameOverStatus(string gameMessage, AudioClip statusSFX)

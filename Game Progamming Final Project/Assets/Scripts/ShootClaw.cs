@@ -211,19 +211,29 @@ public class ShootClaw : MonoBehaviour
                     new Vector3(0.7f, 0.7f, 1),
                     Time.deltaTime * reticleChangeSpeed);
             }
+            else
+            {
+                RestoreReticleColor();
+            }
         }
         else
         {
-            reticleImage.color = Color.Lerp(
+            RestoreReticleColor();
+        }
+
+    }
+
+    private void RestoreReticleColor()
+    {
+        reticleImage.color = Color.Lerp(
                     reticleImage.color,
                     baseReticleColor,
                     Time.deltaTime * reticleChangeSpeed);
 
-            reticleImage.transform.localScale = Vector3.Lerp(
-                reticleImage.transform.localScale,
-                Vector3.one,
-                Time.deltaTime * reticleChangeSpeed);
-        }
-
+        reticleImage.transform.localScale = Vector3.Lerp(
+            reticleImage.transform.localScale,
+            Vector3.one,
+            Time.deltaTime * reticleChangeSpeed);
     }
+
 }

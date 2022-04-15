@@ -5,7 +5,8 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     private Transform player;
-    [SerializeField] private float damage;
+    [SerializeField] private int damageMin;
+    [SerializeField] private int damageMax;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class Laser : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player took " + damage + " damage");
+            other.GetComponent<PlayerHealth>().TakeDamage(Random.Range(damageMin, damageMax));
         }
     }
 }

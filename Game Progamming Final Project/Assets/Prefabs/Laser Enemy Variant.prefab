@@ -124,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_Name
-      value: Laser Enemy
+      value: Laser Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8632055958874330854, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -155,7 +155,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5623721745916819962}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -177,6 +177,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!136 &2555693434993916146
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623721745916819962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &701016962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,5 +241,5 @@ MonoBehaviour:
   deadPrefab: {fileID: 3566200782070927512, guid: 0f27d083bc0bfee44a61cd9fcad431b8, type: 3}
   firePoint: {fileID: 115964437}
   shootTime: 2
-  shootRange: 3
+  shootRange: 8
   rollingBall: {fileID: 3819379969980650061}

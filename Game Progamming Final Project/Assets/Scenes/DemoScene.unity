@@ -562,6 +562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3786766662624548517, guid: 0d54f22772e6a114387c1bcfec380a8b, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3786766662624548696, guid: 0d54f22772e6a114387c1bcfec380a8b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -614,6 +618,10 @@ PrefabInstance:
       propertyPath: reticleImage
       value: 
       objectReference: {fileID: 717334007}
+    - target: {fileID: 3786766662820600669, guid: 0d54f22772e6a114387c1bcfec380a8b, type: 3}
+      propertyPath: clawMoveSpeed
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d54f22772e6a114387c1bcfec380a8b, type: 3}
 --- !u!1001 &6957140989809459226
@@ -710,6 +718,19 @@ PrefabInstance:
     - target: {fileID: 6957140989670226860, guid: 05568adfcb2dbe84c92334329ab0c8ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957140990529740479, guid: 05568adfcb2dbe84c92334329ab0c8ad, type: 3}
+      propertyPath: m_text
+      value: 'Controls:
+
+        WASD/LStick - move
+
+        Mouse/RStick - look
+
+        Space/A
+        - jump
+
+        Click/RT - grapple (hold)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05568adfcb2dbe84c92334329ab0c8ad, type: 3}

@@ -40,6 +40,8 @@ public class ShootClaw : MonoBehaviour
     public AudioClip shootSFX;
     public AudioClip returnSFX;
 
+    public bool normalizeLaunch = true;
+
 
     private void Start()
     {
@@ -135,7 +137,7 @@ public class ShootClaw : MonoBehaviour
             claw.transform.Translate(Vector3.forward * moveDistance);
         }
 
-        if (clawCount <= 0 || Input.GetButtonDown("Fire1"))
+        if (clawCount <= 0 || Input.GetButtonUp("Fire1"))
         {
             state = ClawState.retracting;
         }
@@ -154,13 +156,20 @@ public class ShootClaw : MonoBehaviour
         //_rb.AddForce((attachLocation - _rb.transform.position), ForceMode.Acceleration);
 
         Vector3 forceToApply = (attachLocation - transform.position);
+
+        if (normalizeLaunch && forceToApply.magnitude > 1)
+        {
+            forceToApply = forceToApply.normalized;
+        }
+
         forceToApply.y = forceToApply.y * clawPullForceY;
+        if (forceToApply.y < 0) forceToApply.y = 0;
         forceToApply.x = forceToApply.x * clawPullForceXZ;
         forceToApply.z = forceToApply.z * clawPullForceXZ;
         CharacterMovement cm = GetComponentInParent<CharacterMovement>();
-        cm.ApplyForce(forceToApply);
+        cm.AddAcceleration(forceToApply);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             state = ClawState.retracting;
         }

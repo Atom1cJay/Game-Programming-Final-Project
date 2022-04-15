@@ -18,6 +18,12 @@ public class CharacterMovement : MonoBehaviour
 
     Vector3 appliedForce;
 
+    Vector3 externalAcc;
+    Vector3 externalVel;
+    public float accDamping;
+    public float velDamping;
+    public float externalMovementModifier = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +41,7 @@ public class CharacterMovement : MonoBehaviour
         //Debug.Log("HAxis: " + moveH + ", VAxis: " + moveV);
 
         // Create movement from the input vectors
-        input = (transform.right * moveH + transform.forward * moveV).normalized;
-
-        // sprinting?
-        if (Input.GetButton("Sprint"))
-        {
-            input *= 2;
-        }
+        input = (transform.right * moveH + transform.forward * moveV + transform.up * 0).normalized;
 
         if (_controller.isGrounded)
         {
@@ -70,14 +70,28 @@ public class CharacterMovement : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        
-        
-        _controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        Vector3 baseMovement = moveDirection * moveSpeed;
+
+
+        // apply external acceleration and velocity
+        externalVel += externalAcc;
+        externalAcc /= accDamping;
+        externalVel /= velDamping;
+        Debug.Log("Applying velocity: " + externalVel * externalMovementModifier * Time.deltaTime);
+        Vector3 externalMovement = externalVel * externalMovementModifier;
+
+
+        _controller.Move((baseMovement + externalMovement) * Time.deltaTime);
 
 
         //_controller.Move(appliedForce * Time.deltaTime);
         //appliedForce = Vector3.Lerp(appliedForce, Vector3.zero, Time.deltaTime);
 
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
 
@@ -88,5 +102,17 @@ public class CharacterMovement : MonoBehaviour
         Debug.Log(force);
         _controller.Move(force * Time.deltaTime);
     }
+
+    public void AddAcceleration(Vector3 acceleration)
+    {
+        externalAcc += acceleration;
+    }
+
+    public void AddVelocity(Vector3 velocity)
+    {
+        externalVel += velocity;
+    }
+
+
 
 }

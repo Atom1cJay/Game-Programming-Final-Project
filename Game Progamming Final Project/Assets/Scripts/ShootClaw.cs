@@ -8,8 +8,9 @@ public class ShootClaw : MonoBehaviour
     //public GameObject projectilePrefab;
     //public float launchPower = 100f;
 
-    public float clawPullForceXZ = 5f;
-    public float clawPullForceY = 10f;
+    
+    //public float clawPullForceXZ = 5f;
+    //public float clawPullForceY = 10f;
 
     public float reticleRange = 100f;
     public Image reticleImage;
@@ -18,12 +19,14 @@ public class ShootClaw : MonoBehaviour
 
     public float reticleChangeSpeed = 10f;
 
-    enum ClawState
+
+    public enum ClawState
     {
         neutral, extending, attached, retracting
     }
 
-    private ClawState state;
+    [HideInInspector]
+    public ClawState state;
     private Vector3 attachLocation;
 
     public GameObject claw;
@@ -42,9 +45,17 @@ public class ShootClaw : MonoBehaviour
 
     public bool normalizeLaunch = true;
 
+    PlayerController pc;
+
+    //added code -jared=
+    [SerializeField] LineRenderer lr;
+    public float clawForce = 30f;
+    public float clawMaxForce = 20f;
+
 
     private void Start()
     {
+        pc = GetComponentInParent<PlayerController>();
         baseReticleColor = reticleImage.color;
         state = ClawState.neutral;
         clawCount = clawSecondsMaximum;
@@ -85,14 +96,24 @@ public class ShootClaw : MonoBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        if (state != ClawState.neutral)
+            DrawRope();
+    }
+
     private void NeutralUpdate()
     {
+        lr.positionCount = 0;
+
         if (Input.GetButtonDown("Fire1"))
         {
             audio.PlayOneShot(shootSFX);
             Shoot();
             state = ClawState.extending;
         }
+
+        pc.ApplyForce(Vector3.zero);
     }
 
     private void Shoot()
@@ -142,6 +163,7 @@ public class ShootClaw : MonoBehaviour
             state = ClawState.retracting;
         }
 
+        pc.ApplyForce(Vector3.zero);
         //claw.GetComponent<Rigidbody>().MovePosition(claw.transform.position + (claw.transform.forward * clawMoveSpeed * Time.deltaTime));
 
     }
@@ -157,6 +179,7 @@ public class ShootClaw : MonoBehaviour
 
         Vector3 forceToApply = (attachLocation - transform.position);
 
+        /*
         if (normalizeLaunch && forceToApply.magnitude > 1)
         {
             forceToApply = forceToApply.normalized;
@@ -166,8 +189,13 @@ public class ShootClaw : MonoBehaviour
         if (forceToApply.y < 0) forceToApply.y = 0;
         forceToApply.x = forceToApply.x * clawPullForceXZ;
         forceToApply.z = forceToApply.z * clawPullForceXZ;
-        CharacterMovement cm = GetComponentInParent<CharacterMovement>();
-        cm.AddAcceleration(forceToApply);
+        */
+
+        PlayerController cm = GetComponentInParent<PlayerController>();
+
+        Vector3.ClampMagnitude(forceToApply, 10f);
+
+        cm.ApplyForce(forceToApply * clawForce);
 
         if (Input.GetButtonUp("Fire1"))
         {
@@ -175,6 +203,17 @@ public class ShootClaw : MonoBehaviour
         }
     }
 
+
+    void DrawRope()
+    {
+        if (!claw.activeSelf)
+            return;
+
+        lr.positionCount = 2;
+
+        lr.SetPosition(0, transform.root.position);
+        lr.SetPosition(1, claw.transform.position);
+    }
     private void RetractClaw()
     {
         float moveDistance = clawMoveSpeed * Time.deltaTime;
@@ -190,6 +229,7 @@ public class ShootClaw : MonoBehaviour
             state = ClawState.neutral;
         }
 
+        pc.ApplyForce(Vector3.zero);
     }
 
 

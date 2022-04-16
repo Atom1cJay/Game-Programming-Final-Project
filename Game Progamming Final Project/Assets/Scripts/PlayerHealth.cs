@@ -16,9 +16,6 @@ public class PlayerHealth : MonoBehaviour
     
     public Image fadeImage;
     public Image hurt;
-    public GameObject died;
-    public TextMesh winText;
-    //public Text score;
 
     public int enemiesKilled;
     
@@ -93,6 +90,7 @@ public class PlayerHealth : MonoBehaviour
             cam.GetComponent<CameraControl>().enabled = false;
             cam.GetComponent<ShootClaw>().enabled = false;
             gameObject.GetComponent<PlayerController>().enabled = false;
+            GameObject.FindObjectOfType<LevelManager>().LevelLost();
             // gameObject.GetComponent<CharacterController>().enabled = false;
             //Invoke("Reload", 4.2f);
         }

@@ -152,6 +152,10 @@ public class ShootClaw : MonoBehaviour
                 state = ClawState.attached;
                 return;
             }
+            if (hit.collider.GetComponent<EnemyAI>() != null)
+            {
+                hit.collider.GetComponent<EnemyAI>().takeDamage(4); // temporary kill enemy mechanic
+            }
         }
         else
         {

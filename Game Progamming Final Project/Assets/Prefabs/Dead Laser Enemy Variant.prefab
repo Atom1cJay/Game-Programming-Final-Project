@@ -13,19 +13,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.78
+      value: -1.1647676
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96
+      value: 0.9510331
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.37
+      value: 20.696785
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.18041243
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.98359114
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -55,6 +55,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dead Laser Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4324587653348926054, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53f4a45a9e5a397459ecd704a1a23c26, type: 2}
+    - target: {fileID: 6317578925029434746, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53f4a45a9e5a397459ecd704a1a23c26, type: 2}
+    - target: {fileID: 8100320773420232829, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53f4a45a9e5a397459ecd704a1a23c26, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23975e37eb5dfa04a92fbddbaa5f6f3b, type: 3}
 --- !u!1 &61436449023895019 stripped

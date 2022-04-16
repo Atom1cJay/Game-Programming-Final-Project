@@ -50,11 +50,6 @@ public class LaserEnemy : MonoBehaviour
             rollingBall.Rotate(rb.velocity.magnitude * Time.deltaTime * 1 * Vector3.right);
         }
 
-        /*if (agent.desiredVelocity.magnitude > 0.0f)
-        {
-            rollingBall.Rotate(Vector3.right * Time.deltaTime * 100 * agent.desiredVelocity.magnitude);
-        }   */     
-
         if (Input.GetKey(KeyCode.L))
         {
             Die();

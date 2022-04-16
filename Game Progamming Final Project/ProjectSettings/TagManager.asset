@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Grappleable
   - Claw
+  - PatrolPoint
+  - PlayerPosition
+  - Enemy
   layers:
   - Default
   - TransparentFX

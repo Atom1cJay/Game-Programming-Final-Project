@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public static int enemiesLeft;
-    public Text statusText;
-    public Text scoreText;
+    public TMP_Text statusText;
+    public TMP_Text scoreText;
     public string levelName;
     public AudioClip winSFX;
     public AudioClip loseSFX;
@@ -31,13 +32,14 @@ public class LevelManager : MonoBehaviour
 
         isGameOver = false;
 
-        //scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
+        scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
     }
 
-    void SetGameOverStatus(string gameMessage, AudioClip statusSFX)
+    void SetGameOverStatus(string gameMessage, Color color,  AudioClip statusSFX)
     {
         isGameOver = true;
         statusText.text = gameMessage;
+        statusText.color = color;
         statusText.enabled = true;
 
         AudioSource.PlayClipAtPoint(statusSFX, Camera.main.transform.position);
@@ -47,17 +49,21 @@ public class LevelManager : MonoBehaviour
     {
         enemiesLeft--;
         scoreText.text = "Enemies Left: " + enemiesLeft.ToString();
+        if (enemiesLeft == 0)
+        {
+            LevelBeaten();
+        }
     }
 
     public void LevelLost()
     {
-        SetGameOverStatus("YOU DIED!", loseSFX);
+        SetGameOverStatus("YOU DIED!", Color.red, loseSFX);
         Invoke("LoadCurrentLevel", 2);
     }
 
     public void LevelBeaten()
     {
-        SetGameOverStatus(levelName + " PASSED!", winSFX);
+        SetGameOverStatus(levelName + " PASSED!", Color.green, winSFX);
         Invoke("LoadNextLevel", 2);
     }
 

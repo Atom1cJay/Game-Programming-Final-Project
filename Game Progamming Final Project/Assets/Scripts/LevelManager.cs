@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         if (levelName == "Alpha Release")
-            enemiesLeft = 1;
+            enemiesLeft = 2;
         else if (levelName == "LEVEL 2")
             enemiesLeft = 6;    //change depending on number of enemies in level
         else if (levelName == "LEVEL 3")

@@ -219,7 +219,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (elapsedTime >= shootRate)
         {
-            Instantiate(attackPrefab, firepoint.position, firepoint.rotation);
+            GameObject attackObject = Instantiate(attackPrefab, firepoint.position, firepoint.rotation);
+            Physics.IgnoreCollision(GetComponent<Collider>(), attackObject.GetComponent<Collider>(), true);
             elapsedTime = 0;
         }
     }

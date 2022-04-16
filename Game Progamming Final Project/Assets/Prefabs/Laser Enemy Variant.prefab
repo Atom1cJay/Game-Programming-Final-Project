@@ -637,9 +637,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   health: 10
-  chaseDistance: 12
-  chaseStoppingDistance: 4
-  attackDistance: 6
+  chaseDistance: 15
+  chaseStoppingDistance: 5
+  attackDistance: 10
   patrolSpeed: 5
   chaseSpeed: 5
   shootRate: 1

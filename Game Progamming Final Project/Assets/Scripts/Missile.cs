@@ -22,8 +22,9 @@ public class Missile : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.LookAt(player);
         rb = GetComponent<Rigidbody>();
-
+        speed = startSpeed;
         Invoke("Explode", maxLifeTime);
     }
 
@@ -31,12 +32,14 @@ public class Missile : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) <= seekingRange)
         {
-            transform.LookAt(player);
+            Quaternion targetRotation = Quaternion.LookRotation(player.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f * Time.deltaTime);
         }
         if (rb.velocity.magnitude < maxSpeed)
         {
-            rb.AddForce(Vector3.forward * accel * Time.fixedDeltaTime, ForceMode.Acceleration);
+            speed = Mathf.Clamp(speed + accel, 0, maxSpeed);
         }
+        transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
     }
 
     void Update()

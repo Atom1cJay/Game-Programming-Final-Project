@@ -1928,7 +1928,7 @@ MonoBehaviour:
   headBobMult: 0.1
   headBobSpeed: 0.45
   groundCheck: {fileID: 988593081}
-  groundDistance: 1
+  groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c759829c6b566c44b29ad54659cb084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 200
+  sensitivity: 90
   pitchClamp: 75
 --- !u!114 &3786766662820600669
 MonoBehaviour:
@@ -2648,7 +2648,9 @@ MonoBehaviour:
 
     Shift/X - sprint
 
-    Click/RT - grapple'
+    Click/RT - grapple
+
+    Tab - Pause'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

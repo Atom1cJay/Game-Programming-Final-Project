@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileEnemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7eb5a18fddad1ff4db86ac512c3b55d2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 7eb5a18fddad1ff4db86ac512c3b55d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00076055527
@@ -743,10 +747,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   health: 6
-  chaseDistance: 25
-  chaseStoppingDistance: 30
-  attackDistance: 25
-  patrolSpeed: 0
+  chaseDistance: 50
+  chaseStoppingDistance: 51
+  attackDistance: 50
+  patrolSpeed: 1
   chaseSpeed: 0
   shootRate: 3
   scoreValue: 1
@@ -758,6 +762,6 @@ MonoBehaviour:
   firepoint: {fileID: 4163331434893813596}
   healthSlider: {fileID: 8690055535617701678}
   patrolPoints: []
-  patrolStopTime: 0.3
+  patrolStopTime: 0.75
   enemyEyes: {fileID: 1090691879726288378}
-  fieldOfView: 60
+  fieldOfView: 55

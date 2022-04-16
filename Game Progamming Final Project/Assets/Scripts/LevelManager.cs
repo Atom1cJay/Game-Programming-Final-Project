@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
     {
         if (levelName == "Alpha Release")
             enemiesLeft = 2;
+        else if (levelName == "Level 1") 
+            enemiesLeft = 4;
         else if (levelName == "Level 2")
             enemiesLeft = 13;    //change depending on number of enemies in level
         else if (levelName == "Level 3")
@@ -75,8 +77,10 @@ public class LevelManager : MonoBehaviour
     private void LoadNextLevel()
     {
         if (levelName == "Alpha Release")
-            SceneManager.LoadScene("LEVEL 2");
-        else if (levelName == "LEVEL 2")
-            SceneManager.LoadScene("LEVEL 3");
+            SceneManager.LoadScene("Level 2");
+        else if (levelName == "Level 1")
+            SceneManager.LoadScene("Level 2");
+        else if (levelName == "Level 2")
+            SceneManager.LoadScene("Level 3");
     }
 }

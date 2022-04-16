@@ -13,15 +13,8 @@ public class HealthLootBehavior : MonoBehaviour
     {
         transform.Rotate(Vector3.up, 90 * Time.deltaTime);
 
-        if (transform.position.y > 1.0f)
-        {
-            this.transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
-            //this.transform.Translate(Vector3.left * Time.deltaTime * 1f);
-        }
-        else
-        {
-
-        }
+        transform.position = new Vector3(transform.position.x, 
+            Mathf.SmoothStep(transform.position.y, Mathf.Sin(Time.time) * 0.6f, 0.5f) + 0.75f, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)

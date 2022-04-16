@@ -10,5 +10,9 @@ public class SmokeScript : MonoBehaviour
         {
             other.GetComponent<PlayerHealth>().TakeDamage(100000);
         }
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyAI>().takeDamage(100000);
+        }
     }
 }

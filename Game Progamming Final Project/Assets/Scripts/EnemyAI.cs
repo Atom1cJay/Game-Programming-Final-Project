@@ -72,10 +72,10 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.L))
+        /*if (Input.GetKey(KeyCode.L))
         {
             Die();
-        }
+        }*/
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         switch (currentState)
         {
@@ -110,7 +110,8 @@ public class EnemyAI : MonoBehaviour
     void UpdatePatrolState()
     {
         agent.stoppingDistance = 0;
-        if (Vector3.Distance(transform.position, nextDestination) < 1.0f)
+        Vector3 patrolPos = new Vector3(nextDestination.x, transform.position.y, nextDestination.z);
+        if (Vector3.Distance(transform.position, patrolPos) < 1.0f)
         {
             patrolStopTimer += Time.deltaTime;
             if (patrolStopTimer > patrolStopTime)

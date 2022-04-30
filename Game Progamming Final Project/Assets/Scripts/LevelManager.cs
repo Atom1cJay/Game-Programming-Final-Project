@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (levelName == "Level 3")
         {
-            enemiesLeft = 3;    // figure out
+            enemiesLeft = 30;    // figure out
             levelDuration = 120;
         }
 
@@ -130,6 +130,8 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("Level 2");
         else if (levelName == "Level 2")
             SceneManager.LoadScene("Level 3");
+        else if (levelName == "Level 3")
+            SceneManager.LoadScene("EndScreen");
     }
 
     private void FadeIn()

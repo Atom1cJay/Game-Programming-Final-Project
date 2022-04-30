@@ -7,6 +7,8 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
+    public int levelDuration = 0;
+    float countdown;
     public static int enemiesLeft;
     public TMP_Text statusText;
     public TMP_Text scoreText;
@@ -24,17 +26,51 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         if (levelName == "Alpha Release")
+        {
             enemiesLeft = 2;
-        else if (levelName == "Level 1") 
+            levelDuration = 0;
+        }
+        else if (levelName == "Level 1")
+        {
             enemiesLeft = 4;
+            levelDuration = 0;
+        }
         else if (levelName == "Level 2")
-            enemiesLeft = 13;    //change depending on number of enemies in level
+        {
+            enemiesLeft = 0;
+            levelDuration = 90;
+        }
         else if (levelName == "Level 3")
-            enemiesLeft = 10;   //change depending on number of enemies in level
+        {
+            enemiesLeft = 3;    // figure out
+            levelDuration = 120;
+        }
 
         isGameOver = false;
 
-        scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
+        countdown = levelDuration;
+
+        // if the level does not start as a timed level 
+        if (levelName != "Level 2")
+            scoreText.text = "Enemies Remaining: " + enemiesLeft.ToString();
+    }
+
+    private void Update()
+    {
+        if (!isGameOver)
+        {
+            if (levelName == "Level 2" || (levelName == "Level 3" && enemiesLeft == 0))
+            {
+                if (countdown > 0)
+                    countdown -= Time.deltaTime;
+                else
+                {
+                    countdown = 0.0f;
+                    LevelLost();
+                }
+                scoreText.text = countdown.ToString("0.00");
+            }
+        }
     }
 
     void SetGameOverStatus(string gameMessage, Color color,  AudioClip statusSFX)

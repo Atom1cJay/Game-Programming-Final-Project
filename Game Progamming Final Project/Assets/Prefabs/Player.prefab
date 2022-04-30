@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: TitleScreen
+  sensitivitySlider: {fileID: 0}
 --- !u!1 &909829432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1840,7 @@ GameObject:
   - component: {fileID: 3786766662624548518}
   - component: {fileID: 3786766662624548519}
   - component: {fileID: 3786766662624548699}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2100,7 +2101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c759829c6b566c44b29ad54659cb084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 90
   pitchClamp: 75
 --- !u!114 &3786766662820600669
 MonoBehaviour:
@@ -2493,6 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: TitleScreen
+  sensitivitySlider: {fileID: 0}
 --- !u!223 &634174151
 Canvas:
   m_ObjectHideFlags: 0

@@ -154,7 +154,11 @@ public class ShootClaw : MonoBehaviour
             }
             if (hit.collider.GetComponent<EnemyAI>() != null)
             {
-                hit.collider.GetComponent<EnemyAI>().takeDamage(4); // temporary kill enemy mechanic
+                hit.collider.GetComponent<EnemyAI>().takeDamage(4);
+            }
+            if (hit.collider.GetComponent<Robat>() != null)
+            {
+                hit.collider.GetComponent<Robat>().takeDamage(4);
             }
         }
         else

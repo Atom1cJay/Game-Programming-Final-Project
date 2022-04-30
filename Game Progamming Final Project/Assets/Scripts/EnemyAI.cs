@@ -117,6 +117,7 @@ public class EnemyAI : MonoBehaviour
             if (patrolStopTimer > patrolStopTime)
             {
                 FindNextDestination();
+                patrolStopTimer = 0;
             }
         }
         else if (SeesPlayer())
@@ -252,32 +253,14 @@ public class EnemyAI : MonoBehaviour
 
     private bool PlayerUnobstructedInVision()
     {
-        /*Vector3 playerPos = GameObject.FindGameObjectWithTag("PlayerPosition").GetComponent<Transform>().position;
-        RaycastHit hit;
-
-        if (Vector3.Distance(transform.position, playerPos) <= chaseDistance)
-        {
-            if (Physics.Raycast(enemyEyes.position, (playerPos - enemyEyes.position), out hit, chaseDistance))
-            {
-                Debug.Log("hit: " + hit.collider.gameObject.name);
-                Debug.DrawLine(enemyEyes.position, (playerPos - enemyEyes.position), Color.cyan);
-                if (hit.transform.CompareTag("Player"))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;*/
-
         RaycastHit hit;
 
         if (Vector3.Distance(transform.position, player.transform.position) <= chaseDistance)
         {
-            return true;
             if (Physics.Raycast(enemyEyes.position, (player.transform.position - enemyEyes.position), out hit, chaseDistance))
             {
-                Debug.Log("hit: " + hit.collider.gameObject.name);
-                Debug.DrawLine(enemyEyes.position, (player.transform.position - enemyEyes.position), Color.cyan);
+                //Debug.Log("hit: " + hit.collider.gameObject.name);
+                //Debug.DrawLine(enemyEyes.position, player.transform.position, Color.cyan);
                 if (hit.transform.CompareTag("Player"))
                 {
                     return true;

@@ -15,12 +15,15 @@ public class LevelManager : MonoBehaviour
     public string levelName;
     public AudioClip winSFX;
     public AudioClip loseSFX;
+    public Image fade;
+    private float fadeSpeed;
 
     public static bool isGameOver = false;
 
     private void Awake()
     {
         // set score to 0
+        FadeIn();
     }
 
     void Start()
@@ -71,6 +74,12 @@ public class LevelManager : MonoBehaviour
                 scoreText.text = countdown.ToString("0.00");
             }
         }
+
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, fade.color.a + fadeSpeed * Time.deltaTime);
+        if (fade.color.a <= 0)
+        {
+            fadeSpeed = 0;
+        }
     }
 
     void SetGameOverStatus(string gameMessage, Color color,  AudioClip statusSFX)
@@ -96,18 +105,21 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         SetGameOverStatus("YOU DIED!", Color.red, loseSFX);
+        Invoke("FadeOut", 1);
         Invoke("LoadCurrentLevel", 2);
     }
 
     public void LevelBeaten()
     {
         SetGameOverStatus(levelName + " PASSED!", Color.green, winSFX);
+        Invoke("FadeOut", 1);
         Invoke("LoadNextLevel", 2);
     }
 
     private void LoadCurrentLevel()
     {
         SceneManager.LoadScene(levelName);
+        //FadeIn();
     }
 
     private void LoadNextLevel()
@@ -118,5 +130,15 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("Level 2");
         else if (levelName == "Level 2")
             SceneManager.LoadScene("Level 3");
+    }
+
+    private void FadeIn()
+    {
+        fadeSpeed = -0.3f;
+    }
+
+    private void FadeOut()
+    {
+        fadeSpeed = 1f;
     }
 }

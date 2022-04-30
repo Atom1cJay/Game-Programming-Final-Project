@@ -68,12 +68,8 @@ public class ShootClaw : MonoBehaviour
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
-        
-
-        //Debug.Log("claw count: " + clawCount + ", state: " + state);
-
         switch (state)
         {
             case ClawState.neutral:
@@ -93,11 +89,6 @@ public class ShootClaw : MonoBehaviour
                 break;
         }
 
-
-    }
-
-    private void LateUpdate()
-    {
         if (state != ClawState.neutral)
             DrawRope();
     }

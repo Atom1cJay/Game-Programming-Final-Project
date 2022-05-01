@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if (levelName == "Level 2" || (levelName == "Level 3" && enemiesLeft == 0))
+            if (levelName == "Level 2" || (levelName == "Level 3" && enemiesLeft <= 0))
             {
                 if (countdown > 0)
                     countdown -= Time.deltaTime;
@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
     {
         enemiesLeft--;
         scoreText.text = "Enemies Left: " + enemiesLeft.ToString();
-        if (enemiesLeft == 0)
+        if (enemiesLeft <= 0)
         {
             LevelBeaten();
         }

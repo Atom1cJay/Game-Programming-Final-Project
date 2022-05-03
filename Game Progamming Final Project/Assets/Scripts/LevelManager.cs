@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
     {
         enemiesLeft--;
         scoreText.text = "Enemies Left: " + enemiesLeft.ToString();
-        if (enemiesLeft <= 0)
+        if (enemiesLeft <= 0 && levelName != "Level 3" && levelName != "Level 2")
         {
             LevelBeaten();
         }
